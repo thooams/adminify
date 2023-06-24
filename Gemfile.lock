@@ -346,6 +346,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-ast
+  rubocop-factory_bot
   rubocop-i18n
   rubocop-performance
   rubocop-rails
