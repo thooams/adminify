@@ -76,6 +76,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "rspec-rails"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
@@ -90,6 +91,9 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
+  # Fixtures replacement with a straightforward definition syntax
+  gem 'factory_bot_rails'
+
   # Make your Rubies go faster
   gem 'fasterer'
 
@@ -100,7 +104,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-ast', require: false
   gem 'rubocop-i18n', require: false
-  # gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
 end
