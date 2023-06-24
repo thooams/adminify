@@ -1,0 +1,85 @@
+name: Tests
+
+on: pull_request
+
+jobs:
+  build:
+    env:
+      RAILS_ENV: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: github-actions
+      RAILS_TEST_KEY: ${{ secrets.RAILS_TEST_KEY }}
+      CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+    runs-on: ubuntu-latest
+
+    # services:
+    #   postgres:
+    #     image: postgres:12
+    #     ports:
+    #       - 5432:5432
+    #     env:
+    #       POSTGRES_USER: postgres
+    #       POSTGRES_PASSWORD: postgres
+    #       POSTGRES_DATABASE: github-actions
+    #     options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup System
+      run: |
+        sudo apt-get install libpq-dev
+
+    - name: Set up Ruby with .ruby-version file
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Install gems
+      run: |
+        bundle config path vendor/bundle
+        bundle config set without 'development'
+        bundle install --jobs 4 --retry 3
+
+    - uses: c-hive/gha-yarn-cache@v1
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: Install packages
+      run: |
+        yarn install --pure-lockfile
+
+    - name: Write test.key
+      uses: DamianReeves/write-file-action@v1.0
+      with:
+        path: config/credentials/test.key
+        contents: ${{ secrets.RAILS_TEST_KEY }}
+        write-mode: overwrite
+
+    - name: Setup Database
+      run: |
+        bundle exec rails db:reset
+        bundle exec rails db:fixtures:load
+
+    - name: Precompile Assets
+      run: |
+        RAILS_ENV=test bundle exec rails assets:precompile
+
+    - name: Test with Rake
+      id: retry1
+      continue-on-error: true
+      run: bundle exec rspec
+
+    - name: Re Run failed tests
+      if: steps.retry1.outcome=='failure'
+      run: bundle exec rspec
+
+    - name: Simplecov Report
+      uses: aki77/simplecov-report-action@v1
+      with:
+        failedThreshold: 60
+        token: ${{ secrets.GITHUB_TOKEN }}
+

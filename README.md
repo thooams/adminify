@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Run server
+```
+foreman start
+```
 
-Things you may want to cover:
+# Test app
+```
+rspec
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# CI
+- check gems dependencies
+- check yarn dependencies
+- check security via Brakeman
+- check i18n translation
+- check rspec tests
