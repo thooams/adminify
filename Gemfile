@@ -6,6 +6,9 @@ ruby "3.2.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5"
 
+# I18n translations
+gem 'rails-i18n', '~> 7.0.0'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -47,13 +50,19 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
-group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-end
-
 group :development do
+  # Add a comment summarizing the current schema to the top of model
+  gem 'annotate'
+
+  # Launcher
+  gem 'foreman'
+
+  # Preview email in the default browser instead of sending it
+  gem 'letter_opener'
+
+  # A tool to manage and configure Git hooks
+  gem 'overcommit'
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
@@ -69,4 +78,29 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+end
+
+group :development, :test do
+  # Vulnerability scanner
+  gem 'brakeman'
+
+  # Reducing the number of queries
+  gem 'bullet'
+
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # Make your Rubies go faster
+  gem 'fasterer'
+
+  # i18n-tasks helps you find and manage missing and unused translations
+  gem 'i18n-tasks'
+
+  # Ruby static code analyzer
+  gem 'rubocop', require: false
+  gem 'rubocop-ast', require: false
+  gem 'rubocop-i18n', require: false
+  # gem 'rubocop-rspec', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
