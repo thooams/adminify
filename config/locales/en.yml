@@ -1,0 +1,9 @@
+---
+en:
+  users:
+    create:
+      notice: User was successfully created.
+    destroy:
+      notice: User was successfully destroyed.
+    update:
+      notice: User was successfully updated.

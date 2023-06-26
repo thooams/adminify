@@ -1,0 +1,19 @@
+require:
+  - rubocop-ast
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+
+Layout/LineLength:
+  Enabled: false
+
+AllCops:
+  NewCops: enable
+
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - 'db/migrate/*'
+    - 'spec/*'
+    - 'app/models/*'
