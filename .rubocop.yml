@@ -12,8 +12,4 @@ AllCops:
   NewCops: enable
 
 Style/Documentation:
-  Enabled: true
-  Exclude:
-    - 'db/migrate/*'
-    - 'spec/*'
-    - 'app/models/*'
+  Enabled: false

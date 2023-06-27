@@ -1,0 +1,6 @@
+- cache "footer-#{ Adminify::Application::FULL_VERSION}" do
+  %footer.mt-auto
+    = ui_nav status: :light, position: :center do |n|
+      - n.link "© #{Adminify::Application::FULL_NAME}", url: "#"
+      - n.text "Version #{Adminify::Application::FULL_VERSION}", { class: "d-none d-sm-block", tooltip: true },{ title: Adminify::Application::FULL_VERSION }
+

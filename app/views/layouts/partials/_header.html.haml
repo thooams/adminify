@@ -1,0 +1,3 @@
+- cache_unless defined?(current_user) ? current_user : 'user', "header-#{Adminify::Application::FULL_VERSION}" do
+  %header.fixed-top
+    = render partial: 'layouts/partials/navbar'

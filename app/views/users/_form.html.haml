@@ -1,22 +1,8 @@
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
+= ui_form_for @user do |f|
+  = f.error_notification message: f.object.errors[:base].to_sentence.to_s if f.object.errors[:base].present?
 
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :role
-    = f.text_field :role
-  .actions
-    = f.submit 'Save'
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :email, as: :email
+  = f.input :role, as: :select, collection: User::ROLES, include_blank: false
+  = f.submit t('.submit'), class: 'btn btn-primary'

@@ -1,6 +1,25 @@
-%h1 Listing users
+%h1= t('.listing')
 
-= ui_table_card store: @users
+= ui_row do
+  = ui_col do
+    = ui_button_link t('.new'), url: new_user_path, size: :sm
+  = ui_col 4 do
+    = ui_table_search_field store: @users
+
 %br
+= ui_table({ store: @users, striped: true }) do |t|
+  - t.columns do |cls|
+    - cls.column :id
+    - cls.column :first_name
+    - cls.column :last_name
+    - cls.column :email
+    - cls.column :role, format: lambda { |records, record| ui_badge record.role, status: UserViewObject.new(UserDecorator.new(record)).status }
+    - cls.column :created_at, format: lambda { |records, record| DateValueObject.new(record.created_at).call }
+    - cls.column :updated_at, format: lambda { |records, record| DateValueObject.new(record.updated_at).call }
 
-= link_to 'New User', new_user_path
+
+= ui_row do
+  = ui_col do
+    = ui_table_pagination store: @users
+  = ui_col do
+    = ui_table_pagination_per_page store: @users

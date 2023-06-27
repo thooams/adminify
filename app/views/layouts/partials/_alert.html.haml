@@ -1,0 +1,5 @@
+- flash.each do |type, msg|
+  - status = type == "alert" ? :danger : :success
+  - unless msg === true
+    = ui_toast status: status, class: 'show' do |t|
+      - t.body msg, closable: true

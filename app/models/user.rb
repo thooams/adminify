@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # Constants
   ADMIN = 'admin'
   USER = 'user'
+  ROLES = [ADMIN, USER].freeze
 
   # Callbacks
 

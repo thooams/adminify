@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    = render partial: 'layouts/partials/meta'
+  %body.d-flex.flex-column.h-100
+    = render partial: 'layouts/partials/header'
+    = ui_container type: :fluid,  class: "content flex-shrink-1" do
+      #alert.toasts-container
+        = render partial: 'layouts/partials/alert'
+      = yield
+    = render partial: "layouts/partials/footer"

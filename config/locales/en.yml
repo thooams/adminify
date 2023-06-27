@@ -1,9 +1,30 @@
 ---
 en:
+  back: Back
+  date:
+    formats:
+      long: "%Y-%m-%d %H:%M"
+  interface:
+    my_profile: My profile
+    navbar:
+      english: English
+      french: French
+    sign_in: Sign in
+    sign_out: Sign out
+  show: Show
   users:
     create:
       notice: User was successfully created.
     destroy:
       notice: User was successfully destroyed.
+    edit:
+      edit: Edit user
+    form:
+      submit: Submit
+    index:
+      listing: Listing users
+      new: New user
+    new:
+      new: New user
     update:
       notice: User was successfully updated.
