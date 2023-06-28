@@ -2,7 +2,8 @@
 %html
   %head
     = render partial: 'layouts/partials/meta'
-  %body.d-flex.flex-column.h-100
+  - page_id = PageStrategy.new(controller_name: controller_name, action_name: action_name).id
+  %body.d-flex.flex-column.h-100{ id: page_id }
     = render partial: 'layouts/partials/header'
     = ui_container type: :fluid,  class: "content flex-shrink-1" do
       #alert.toasts-container

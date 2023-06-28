@@ -1,0 +1,19 @@
+= render "devise/shared/prepend_view"
+%h2= t('devise.title.log_in')
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false, controller: :devise }}) do |f|
+  .form-inputs
+    .form-label-group
+      = f.input :email, required: false, label: false, autofocus: true, placeholder: 'Email', wrapper: false
+      = label_tag :user_email, t("devise.email")
+    .form-label-group
+      = f.input :password, required: false, placeholder: 'Password', wrapper: false, label: false, hint: false
+      = label_tag :user_password,  t("devise.password")
+  .mb-3= f.input :remember_me, as: :ui_switch_field, boolean: true, label: t('devise.remember_me') if devise_mapping.rememberable?
+  .form-actions
+    = f.button :submit, t('devise.sign_in'), class: 'btn-primary btn-block'
+
+= render "devise/shared/links"
+
+%br
+%em
+  (email: admin@adminify.com, password: admin@adminify.com)

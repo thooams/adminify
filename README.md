@@ -1,8 +1,13 @@
 # README
 
+# Initialize DB
+```
+rails db:seed
+```
+
 # Run server
 ```
-foreman start
+rails s
 ```
 
 # Test app

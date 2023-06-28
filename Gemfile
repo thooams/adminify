@@ -55,16 +55,20 @@ gem 'haml-rails', '~> 2.0'
 
 gem 'ui_bibz', path: '../ui_bibz'
 
+# Create simple form
 gem 'simple_form'
+
+# Use devise for authentication
+gem 'devise'
+
+# Use devise invitable for invitation
+gem 'devise_invitable', '~> 2.0.0'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 group :development do
   # Add a comment summarizing the current schema to the top of model
   gem 'annotate'
-
-  # Launcher
-  gem 'foreman'
 
   # Preview email in the default browser instead of sending it
   gem 'letter_opener'
