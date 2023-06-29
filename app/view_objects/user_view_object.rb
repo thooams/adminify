@@ -10,4 +10,8 @@ class UserViewObject
   def status
     record.user? ? :primary : :danger
   end
+
+  def translate(attribute)
+    "#{User.human_attribute_name(attribute)}:"
+  end
 end
