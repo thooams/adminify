@@ -122,3 +122,5 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
+
+gem 'pundit', '~> 2.3'

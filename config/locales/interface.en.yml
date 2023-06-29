@@ -1,6 +1,7 @@
 ---
 en:
   interface:
+    users: Users
     my_profile: My profile
     navbar:
       english: English

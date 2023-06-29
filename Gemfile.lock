@@ -141,7 +141,6 @@ GEM
       colorize (~> 0.7)
       ruby_parser (>= 3.19.1)
     ffi (1.15.5)
-    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     haml (6.1.1)
@@ -222,6 +221,8 @@ GEM
     public_suffix (5.0.1)
     puma (5.6.6)
       nio4r (~> 2.0)
+    pundit (2.3.0)
+      activesupport (>= 3.0.0)
     racc (1.7.1)
     rack (2.2.7)
     rack-test (2.1.0)
@@ -395,7 +396,6 @@ DEPENDENCIES
   devise_invitable (~> 2.0.0)
   factory_bot_rails
   fasterer
-  foreman
   haml-rails (~> 2.0)
   i18n-tasks
   importmap-rails
@@ -403,6 +403,7 @@ DEPENDENCIES
   letter_opener
   overcommit
   puma (~> 5.0)
+  pundit (~> 2.3)
   rails (~> 7.0.5)
   rails-i18n (~> 7.0.0)
   redis (~> 4.0)

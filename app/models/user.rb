@@ -25,6 +25,7 @@ class User < ApplicationRecord
   # Validations
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, inclusion: { in: [ADMIN, USER] }
+  validates :first_name, :last_name, presence: true
 
   # Delegations
 

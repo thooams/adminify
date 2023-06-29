@@ -9,7 +9,7 @@ class UserDecorator < SimpleDelegator
     role == User::ADMIN
   end
 
-  def login_name
+  def full_name
     "#{first_name} #{last_name}"
   end
 end
