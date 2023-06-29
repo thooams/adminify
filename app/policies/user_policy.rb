@@ -8,6 +8,10 @@ class UserPolicy < ApplicationPolicy
     @user = user
   end
 
+  def permitted_attributes
+    %i[first_name last_name email role]
+  end
+
   def admin?
     UserDecorator.new(user).admin?
   end
