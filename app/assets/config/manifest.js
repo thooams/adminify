@@ -2,8 +2,5 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
-//= link jquery.multi-select.min.js
-//= link bootstrap-markdown.js
-//= link bootstrap-datepicker.min.js
-//= link bootstrap-switch.min.js
-//= link jquery.quicksearch.min.js
+//= link ui_bibz.js
+//= link rails-ujs.js

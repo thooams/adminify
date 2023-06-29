@@ -1,0 +1,9 @@
+---
+en:
+  interface:
+    my_profile: My profile
+    navbar:
+      english: English
+      french: French
+    sign_in: Sign in
+    sign_out: Sign out

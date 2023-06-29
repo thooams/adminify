@@ -1,0 +1,10 @@
+---
+en:
+  date:
+    formats:
+      long: "%Y-%m-%d %H:%M"
+    password: Password
+    remember_me: Remember me
+    sign_in: Sign in
+    title:
+      log_in: Log in

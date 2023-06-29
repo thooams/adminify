@@ -2,7 +2,7 @@
 
 = ui_row do
   = ui_col do
-    = ui_button_link t('.new'), url: new_user_path, size: :sm
+    = ui_button_link t('.invite'), url: new_user_invitation_path, size: :sm
   = ui_col 4 do
     = ui_table_search_field store: @users
 

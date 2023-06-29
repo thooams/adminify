@@ -1,26 +1,6 @@
 ---
 en:
   back: Back
-  date:
-    formats:
-      long: "%Y-%m-%d %H:%M"
-  devise:
-    email: Email
-    password: Password
-    remember_me: Remember me
-    sign_in: Sign in
-    title:
-      log_in: Log in
-  errors:
-    messages:
-      not_saved: Not saved
-  interface:
-    my_profile: My profile
-    navbar:
-      english: English
-      french: French
-    sign_in: Sign in
-    sign_out: Sign out
   show: Show
   users:
     create:
@@ -32,6 +12,7 @@ en:
     form:
       submit: Submit
     index:
+      invite: Invite
       listing: Listing users
       new: New user
     new:
