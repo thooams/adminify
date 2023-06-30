@@ -15,29 +15,9 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  # GET /users/new
-  def new
-    @user = User.new
-    authorize @user
-  end
-
   # GET /users/1/edit
   def edit
     authorize @user
-  end
-
-  # POST /users or /users.json
-  def create
-    @user = User.new(user_params)
-    authorize @user
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to user_url(@user), notice: t('.notice') }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
@@ -71,6 +51,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :role)
+    params.require(:user).permit(policy(User).permitted_attributes)
   end
 end

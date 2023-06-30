@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 class UserPolicy < ApplicationPolicy
-  attr_reader :user, :current_user
-
-  def initialize(user, _record)
-    super
-    @user = user
-  end
-
   def permitted_attributes
     %i[first_name last_name email role]
   end
@@ -16,9 +9,13 @@ class UserPolicy < ApplicationPolicy
     UserDecorator.new(user).admin?
   end
 
+  # Only current user can edit his profile
+  def edit?
+    user == record
+  end
+
   alias index? admin?
   alias show? admin?
-  alias update? admin?
-  alias create? admin?
+  alias update? edit?
   alias destroy? admin?
 end

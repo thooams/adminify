@@ -1,6 +1,10 @@
 ---
 en:
   back: Back
+  pages:
+    index:
+      welcome: Welcome
+  pundit_not_authorize: You are not authorized to perform this action.
   show: Show
   users:
     create:
@@ -17,5 +21,9 @@ en:
       new: New user
     new:
       new: New user
+    show:
+      confirmation: Confirmation
+      info: Info
+      invitation: Invitation
     update:
       notice: User was successfully updated.

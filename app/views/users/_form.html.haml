@@ -4,5 +4,6 @@
   = f.input :first_name
   = f.input :last_name
   = f.input :email, as: :email
-  = f.input :role, as: :select, collection: User::ROLES, include_blank: false
+  - if policy(:user).admin?
+    = f.input :role, as: :select, collection: User::ROLES, include_blank: false
   = f.submit t('.submit'), class: 'btn btn-primary'

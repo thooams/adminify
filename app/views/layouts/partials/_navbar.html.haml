@@ -5,11 +5,9 @@
     - nb.nav do |n|
       - n.link t('interface.users'), url: users_path
   -  nb.nav class: "ms-auto" do |n|
-    -# n.dropdown(locale, class: 'nav-item', alignment: :right) do |d|
-      - d.link t('interface.navbar.french'), url: locale_path("fr"), class: 'nav-link', turbolinks: false
-      - d.link t('interface.navbar.english'), url: locale_path("en"), class: 'nav-link', turbolinks: false
     - if user_signed_in?
       - n.dropdown UserViewObject.new(current_user).login_name, glyph: 'user', alignment: :right do |d|
+        - d.link t('interface.my_profile'), { url: edit_user_url(current_user.id)}
         - d.link t('interface.sign_out'), { url: destroy_user_session_path},  data: { method: :delete }
     - else
       - n.link t('interface.sign_in'), url: new_user_session_path

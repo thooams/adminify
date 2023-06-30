@@ -26,6 +26,12 @@ RSpec.describe '/users' do
     attributes_for(:user).merge(role: nil)
   end
 
+  let(:admin) { create(:user, :admin) }
+
+  before do
+    sign_in admin
+  end
+
   describe 'GET /index' do
     it 'renders a successful response' do
       User.create! valid_attributes
@@ -42,46 +48,10 @@ RSpec.describe '/users' do
     end
   end
 
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_user_url
-      expect(response).to be_successful
-    end
-  end
-
   describe 'GET /edit' do
     it 'renders a successful response' do
-      user = User.create! valid_attributes
-      get edit_user_url(user)
+      get edit_user_url(admin)
       expect(response).to be_successful
-    end
-  end
-
-  describe 'POST /create' do
-    context 'with valid parameters' do
-      it 'creates a new User' do
-        expect do
-          post users_url, params: { user: valid_attributes }
-        end.to change(User, :count).by(1)
-      end
-
-      it 'redirects to the created user' do
-        post users_url, params: { user: valid_attributes }
-        expect(response).to redirect_to(user_url(User.last))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it 'does not create a new User' do
-        expect do
-          post users_url, params: { user: invalid_attributes }
-        end.not_to change(User, :count)
-      end
-
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post users_url, params: { user: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
     end
   end
 
@@ -92,24 +62,21 @@ RSpec.describe '/users' do
       end
 
       it 'updates the requested user' do
-        user = User.create! valid_attributes
-        patch user_url(user), params: { user: new_attributes }
-        user.reload
-        expect(user.first_name).to eq('John')
+        patch user_url(admin), params: { user: new_attributes }
+        admin.reload
+        expect(admin.first_name).to eq('John')
       end
 
       it 'redirects to the user' do
-        user = User.create! valid_attributes
-        patch user_url(user), params: { user: new_attributes }
-        user.reload
-        expect(response).to redirect_to(user_url(user))
+        patch user_url(admin), params: { user: new_attributes }
+        admin.reload
+        expect(response).to redirect_to(user_url(admin))
       end
     end
 
     context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        user = User.create! valid_attributes
-        patch user_url(user), params: { user: invalid_attributes }
+        patch user_url(admin), params: { user: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

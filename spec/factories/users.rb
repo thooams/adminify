@@ -6,12 +6,11 @@ FactoryBot.define do
     last_name { 'My last name' }
     email
     role { User::USER }
+    password { 'password12345' }
+    confirmed_at { Time.zone.now }
   end
 
-  factory :admin do
-    first_name { 'My admin first name' }
-    last_name { 'My admin last name' }
-    email
+  trait :admin do
     role { User::ADMIN }
   end
 
