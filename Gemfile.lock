@@ -1,5 +1,7 @@
-PATH
-  remote: ../ui_bibz
+GIT
+  remote: https://github.com/thooams/ui_bibz.git
+  revision: 0f0b936a723a33a994e683b9ac53b9f0e133a309
+  branch: develop
   specs:
     ui_bibz (4.0.0.beta)
       bootstrap (~> 5.3.0.alpha3)

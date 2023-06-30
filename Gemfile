@@ -53,7 +53,7 @@ gem 'sassc-rails'
 # Haml as the templating engine
 gem 'haml-rails', '~> 2.0'
 
-gem 'ui_bibz', path: '../ui_bibz'
+gem 'ui_bibz', github: 'thooams/ui_bibz', branch: 'develop'
 
 # Create simple form
 gem 'simple_form'
